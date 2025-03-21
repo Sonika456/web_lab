@@ -1,28 +1,28 @@
 body {
-    background-color: rgb(216, 255, 218);
-    color: rgb(235, 60, 147);
+    background-color: papayawhip;
+    color: brown;
     font-family:'Times New Roman';
     margin: 0px;
 }
 
 header {
-    background-color: rgb(235, 60, 147);
-    color: rgb(216, 255, 218);
+    background-color: darkorange;
+    color: papayawhip;
     font-family:'Times New Roman';
     padding: 20px;
     font-size: 16pt;
 }
 
 main {
-    background-color: rgb(216, 255, 218);
-    color: rgb(235, 60, 147);
+    background-color:papayawhip;
+    color: brown;
     font-family:'Times New Roman';
     margin: 10px;
 }
 
 footer {
-    background-color: rgb(235, 60, 147);
-    color: rgb(216, 255, 218);
+    background-color: rgb(255, 186, 59);
+    color: brown;
     font-family:'Times New Roman';
     padding: 20px;
     font-size: 16pt;    
