@@ -17,7 +17,7 @@ main {
     background-color:papayawhip;
     color: brown;
     font-family:'Times New Roman';
-    margin: 10px;
+    margin: 10px 20px 68.313px;
 }
 
 footer {
@@ -27,6 +27,10 @@ footer {
     padding: 20px;
     font-size: 16pt;    
     text-align: right;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 
 a {
