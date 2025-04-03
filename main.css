@@ -30,5 +30,34 @@ footer {
 }
 
 a {
+    color: DeepPink;
     text-decoration: none;
+}
+
+a:link {
+    color: DeepPink;
+    text-decoration: underline;
+    background-color: Pink;
+    box-shadow: 2px 2px 1px HotPink;
+}
+
+a:visited {
+    color: MediumBlue;
+    text-decoration: underline;
+    background-color: LightSkyBlue;
+    box-shadow: 2px 2px 1px Blue;
+}
+
+a:hover {
+    color: ForestGreen;
+    text-decoration: underline;
+    background-color: GreenYellow;
+    box-shadow: 2px 2px 1px YellowGreen;
+}
+
+a:active {
+    color: Gold;
+    text-decoration: underline;
+    background-color: LightYellow;
+    box-shadow: 2px 2px 1px Yellow;
 }
