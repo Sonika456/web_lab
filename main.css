@@ -63,3 +63,24 @@ a:active {
     background-color: LightYellow;
     box-shadow: 2px 2px 1px Yellow;
 }
+
+div.menu {
+    border: 2px solid ;
+    border-radius: 5px;
+    width: 230px;
+    margin: 0 auto;
+    background-color: LightYellow;
+    color: Gold;
+    box-shadow: 0 0 15px Yellow;
+}
+
+div.menu:hover {
+    border: 2px solid ;
+    border-radius: 5px;
+    width: 230px;
+    margin: 0 auto;
+    background-color: LightSkyBlue;
+    color: MediumBlue;
+    box-shadow: 0 0 15px Blue;
+}
+
