@@ -15,6 +15,14 @@
                 let result = a + b;
                 alert('Сумма ' + a+ ' и ' + b + ' равна ' + result);
             }
+            function showAuthor() {
+                let author = 'Авторка страницы:\nЧеревцова Софья Константиновна';
+                alert(author);
+            }
+            function showFooter() {
+                let foot = 'Приветствую вас на моей странице!';
+                alert(foot);
+            }
         </script>
         <style>
             .message {
@@ -33,16 +41,16 @@
         </style>
     </head>
         <body>
-            <header>
+            <header onclick="showAuthor()" style="cursor: pointer;">
                 НГТУ. ФБ, Лабораторная работа 4
             </header>
 
             <main>
                 <div class="message" onclick="showSum()">Сколько будет 5154+7891?</div>
-                <div class="message">Узнать, кто автор страницы</div>
+                <div class="message" onclick="showAuthor()">Узнать, кто автор страницы</div>
             </main>
 
-            <footer>
+            <footer ondblclick="showFooter()" style="cursor: pointer;">
                 &copy; Черевцова Софья, ФБИ-34, 2 курс, 2025
             </footer>
         </body>
