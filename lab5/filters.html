@@ -12,10 +12,49 @@
             function blurChange() {
                 let value = document.getElementById('blurValue').value + 'px';
                 document.getElementById('blurOutput').innerText = value;
-                document.getElementById('blurImage').style.filter = 'blur(' + value + ')'
-
+                document.getElementById('Image16').style.filter = 'blur(' + value + ')'
+            }
+            function brightChange() {
+                let value = document.getElementById('brightValue').value + '%';
+                document.getElementById('brightOutput').innerText = value;
+                document.getElementById('Image17').style.filter = 'brightness(' + value + ')'
+            }
+            function contrastChange() {
+                let value = document.getElementById('contrastValue').value + '%';
+                document.getElementById('contrastOutput').innerText = value;
+                document.getElementById('Image18').style.filter = 'contrast(' + value + ')'
+            }
+            function grayscaleChange() {
+                let value = document.getElementById('grayscaleValue').value + '%';
+                document.getElementById('grayscaleOutput').innerText = value;
+                document.getElementById('Image19').style.filter = 'grayscale(' + value + ')'
+            }
+            function huerotateChange() {
+                let value = document.getElementById('huerotateValue').value + 'deg';
+                document.getElementById('huerotateOutput').innerText = value;
+                document.getElementById('Image161').style.filter = 'hue-rotate(' + value + ')'
+            }
+            function invertChange() {
+                let value = document.getElementById('invertValue').value + '%';
+                document.getElementById('invertOutput').innerText = value;
+                document.getElementById('Image171').style.filter = 'invert(' + value + ')'
+            }
+            function saturateChange() {
+                let value = document.getElementById('saturateValue').value + '%';
+                document.getElementById('saturateOutput').innerText = value;
+                document.getElementById('Image181').style.filter = 'saturate(' + value + ')'
+            }
+            function sepiaChange() {
+                let value = document.getElementById('sepiaValue').value + '%';
+                document.getElementById('sepiaOutput').innerText = value;
+                document.getElementById('Image191').style.filter = 'sepia(' + value + ')'
             }
         </script>
+        <style>
+            div {
+                margin: 15px;
+            }
+        </style>
     </head>
         <body>
             <header>
@@ -28,7 +67,52 @@
                     <input type="range" min="0" max="20" value="0" onchange="blurChange()" id="blurValue">
                     <span id="blurOutput"></span>
                 </div>
-                <div><img src="16.jpg" id="blurImage" style="height: 500px;"></div>
+                <div><img src="16.jpg" id="Image16" style="height: 300px;"></div>
+                <div>
+                    Фильтр bright:
+                    <input type="range" min="0" max="500" value="100" onchange="brightChange()" id="brightValue">
+                    <span id="brightOutput"></span>
+                </div>
+                <div><img src="17.jpg" id="Image17" style="height: 388px;"></div>
+                <div>
+                    Фильтр contrast:
+                    <input type="range" min="0" max="500" value="100" onchange="contrastChange()" id="contrastValue">
+                    <span id="contrastOutput"></span>
+                </div>
+                <div><img src="18.jpg" id="Image18" style="height: 400px;"></div>
+
+                <div>
+                    Фильтр grayscale:
+                    <input type="range" min="0" max="100" value="0" onchange="grayscaleChange()" id="grayscaleValue">
+                    <span id="grayscaleOutput"></span>
+                </div>
+                <div><img src="19.jpg" id="Image19" style="height: 300px;"></div>
+
+                <div>
+                    Фильтр hue-rotate:
+                    <input type="range" min="0" max="360" value="0" onchange="huerotateChange()" id="huerotateValue">
+                    <span id="huerotateOutput"></span>
+                </div>
+                <div><img src="16.jpg" id="Image161" style="height: 300px;"></div>
+                <div>
+                    Фильтр invert:
+                    <input type="range" min="0" max="100" value="0" onchange="invertChange()" id="invertValue">
+                    <span id="invertOutput"></span>
+                </div>
+                <div><img src="17.jpg" id="Image171" style="height: 388px;"></div>
+                <div>
+                    Фильтр saturate:
+                    <input type="range" min="0" max="500" value="100" onchange="saturateChange()" id="saturateValue">
+                    <span id="saturateOutput"></span>
+                </div>
+                <div><img src="18.jpg" id="Image181" style="height: 400px;"></div>
+
+                <div>
+                    Фильтр sepia:
+                    <input type="range" min="0" max="100" value="0" onchange="sepiaChange()" id="sepiaValue">
+                    <span id="sepiaOutput"></span>
+                </div>
+                <div><img src="19.jpg" id="Image191" style="height: 300px;"></div>
             </main>
 
             <footer>
