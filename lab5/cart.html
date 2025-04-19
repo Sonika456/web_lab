@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Черевцова Софья Константиновна. Лабораторная работа 5</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-16x16.png">
+        <link rel="icon" href="../favicon-32x32.png">
+        <script>
+            function showSum() {
+                let input1 = document.getElementById('num1');
+                let input2 = document.getElementById('num2');
+                let input3 = document.getElementById('num3');
+                let input4 = document.getElementById('num4');
+                let input5 = document.getElementById('num5');
+                let output = document.getElementById('output');
+                let a = parseInt(input1.value);
+                let b = parseInt(input2.value);
+                let c = parseInt(input3.value);
+                let d = parseInt(input4.value);
+                let e = parseInt(input5.value);
+                
+                if (a < 0 || b < 0 || c < 0 || d < 0 || e < 0) {
+                    alert('Ошибка! Введите положительные числа');
+                    return;
+                }
+                if(isNaN(a)) {
+                    alert('Введите числовое значение в первое поле')
+                    input1.style.color = 'red';
+                    input1.style.borderColor = 'red';
+                    return;
+                }
+                if(isNaN(b)) {
+                    alert('Введите числовое значение в второе поле')
+                    input1.style.color = 'red';
+                    input1.style.borderColor = 'red';
+                    return;
+                }
+                if(isNaN(c)) {
+                    alert('Введите числовое значение в третье поле')
+                    input1.style.color = 'red';
+                    input1.style.borderColor = 'red';
+                    return;
+                }
+                if(isNaN(d)) {
+                    alert('Введите числовое значение в четвертое поле')
+                    input1.style.color = 'red';
+                    input1.style.borderColor = 'red';
+                    return;
+                }
+                if(isNaN(e)) {
+                    alert('Введите числовое значение в пятое поле')
+                    input1.style.color = 'red';
+                    input1.style.borderColor = 'red';
+                    return;
+                }
+                input1.style.color = '';
+                input1.style.borderColor = '';
+                input2.style.color = '';
+                input2.style.borderColor = '';
+                input3.style.color = '';
+                input3.style.borderColor = '';
+                input4.style.color = '';
+                input4.style.borderColor = '';
+                input5.style.color = '';
+                input5.style.borderColor = '';
+                let result = (a*100) + (b*80) + (c*150) + (d*200) + (e*180);
+                output.innerHTML = ' Общая цена: ' + result;
+            }
+            function Del() {
+                let input1 = document.getElementById('num1');
+                let input2 = document.getElementById('num2');
+                let input3 = document.getElementById('num3');
+                let input4 = document.getElementById('num4');
+                let input5 = document.getElementById('num5');
+                let output2 = document.getElementById('output2');
+                input1.value = '';
+                input2.value = '';
+                input3.value = '';
+                input4.value = '';
+                input5.value = '';
+                output.innerHTML = ' ';
+            }
+        </script>
+        <style>
+            div {
+                margin: 5px;
+            }
+            .a {
+                border: 1px solid Chocolate;
+                width: 220px;
+                height: 350px;
+                padding: 10px;
+            }
+            .b {
+                text-align: center;
+                font-size: 20px;
+            }
+        </style>
+    </head>
+        <body>
+            <header>
+                НГТУ. ФБ, Лабораторная работа 4
+            </header>
+
+            <main>
+                <div class="a">
+                    <div class="b"><b>Корзина товаров</b></div>
+                    <div><label>Яблоки (100р/шт):</label></div>
+                    <input type="number" value="Введите количество яблок" id="num1">
+                    <div><label>Груши (80р/шт):</label></div>
+                    <input type="number" value="Введите количество груш" id="num2">
+                    <div><label>Апельсины (150р/шт):</label></div>
+                    <input type="number" value="Введите количество апельсинов" id="num3">
+                    <div><label>Персики (200р/шт):</label></div>
+                    <input type="number" value="Введите количество персиков" id="num4">
+                    <div><label>Бананы (180р/шт):</label></div>
+                    <input type="number" value="Введите количество бананов" id="num5">
+                    <div><input type="button" value="Рассчитать" onclick="showSum()"></div>
+                    <div id="output"></div>
+                    <div><input type="button" value="Очистить" onclick="Del()"></div>
+                    <div id="output2"></div>
+                </div>             
+            </main>
+
+            <footer>
+                &copy; Черевцова Софья, ФБИ-34, 2 курс, 2025
+            </footer>
+        </body>
+</html>
