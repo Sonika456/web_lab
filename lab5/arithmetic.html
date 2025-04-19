@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Черевцова Софья Константиновна. Лабораторная работа 5</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-16x16.png">
+        <link rel="icon" href="../favicon-32x32.png">
+        <script>
+            function showSum () {
+                let inputA = document.getElementById('numberA')
+                let inputB = document.getElementById('numberB')
+                let a = parseInt(inputA.value);
+                let b = parseInt(inputB.value);
+                let result = a + b;
+                alert('Сумма ' + a + ' и ' + b + ' равна ' + result);
+            }
+            function showDif () {
+                let inputA = document.getElementById('numberA')
+                let inputB = document.getElementById('numberB')
+                let a = parseInt(inputA.value);
+                let b = parseInt(inputB.value);
+                let result = a - b;
+                alert('Разность ' + a + ' и ' + b + ' равна ' + result);
+            }
+            function showPr () {
+                let inputA = document.getElementById('numberA')
+                let inputB = document.getElementById('numberB')
+                let a = parseInt(inputA.value);
+                let b = parseInt(inputB.value);
+                let result = a * b;
+                alert('Произведение ' + a + ' и ' + b + ' равно ' + result);
+            }
+            function showDiv () {
+                let inputA = document.getElementById('numberA')
+                let inputB = document.getElementById('numberB')
+                let a = parseInt(inputA.value);
+                let b = parseInt(inputB.value);
+                if (b == 0) {
+                    alert('На ноль делить нельзя!');
+                    inputB.focus();
+                    inputB.select();
+                    inputB.style.color = 'red';
+                    inputB.style.borderColor = 'red';
+                    return;
+                }
+                if(isNaN(a)) {
+                    alert('Введите числовое значение в первое поле')
+                    inputA.style.color = 'red';
+                    inputA.style.borderColor = 'red';
+                    return;
+                }
+                if(isNaN(b)) {
+                    alert('Введите числовое значение во второе поле')
+                    inputB.style.color = 'red';
+                    inputB.style.borderColor = 'red';
+                    return;
+                }
+                inputA.style.color = '';
+                inputA.style.borderColor = '';
+                inputB.style.color = '';
+                inputB.style.borderColor = '';
+                let result = a/b;
+                alert(a + ' / ' + b + ' = ' + result);
+            }
+            function showExp() {
+                let inputA = document.getElementById('numberA')
+                let inputB = document.getElementById('numberB')
+                let a = parseInt(inputA.value);
+                let b = parseInt(inputB.value);
+                if (a == 0 && b == 0) {
+                    alert('Ошибка!');
+                    return;
+                }
+                if(isNaN(a)) {
+                    alert('Введите числовое значение в первое поле')
+                    inputA.style.color = 'red';
+                    inputA.style.borderColor = 'red';
+                    return;
+                }
+                if(isNaN(b)) {
+                    alert('Введите числовое значение во второе поле')
+                    inputB.style.color = 'red';
+                    inputB.style.borderColor = 'red';
+                    return;
+                }
+                inputA.style.color = '';
+                inputA.style.borderColor = '';
+                inputB.style.color = '';
+                inputB.style.borderColor = '';
+                let result = a**b;
+                alert(a + ' в степени ' + b + ' = ' + result);
+            }
+            function showAuthor() {
+                let author = 'Авторка страницы:\nЧеревцова Софья Константиновна';
+                alert(author);
+            }
+            function showFooter() {
+                let foot = 'Приветствую вас на моей странице!';
+                alert(foot);
+            }
+            function changeOutput(buttonNum, backColor, textColor) {
+                let output = document.getElementById('output');
+                output.innerHTML = 'Нажата кнопка ' + buttonNum;
+                output.style.backgroundColor = backColor;
+                output.style.color = textColor;
+            }
+        </script>
+        <style>
+            .message {
+                width: 250px;
+                height: 50px;
+                line-height: 50px;
+                text-align: center;
+                background-color: LightCyan;
+                color: DodgerBlue;
+                border: 1px solid RoyalBlue;
+                margin: 1px;
+                display: inline-block;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            #output {
+                border: 1px solid;
+                width: 300px;
+                height: 40px;
+            }
+        </style>
+    </head>
+        <body>
+            <header onclick="showAuthor()" style="cursor: pointer;">
+                НГТУ. ФБ, Лабораторная работа 5
+            </header>
+
+            <main>
+                <label>Первое число: <input type="number" value="5154" id="numberA"></label><br>
+                <label>Второе число: <input type="number" value="7891" id="numberB"></label><br>
+                <div class="message" onclick="showSum()">Найти сумму чисел</div>
+                <div class="message" onclick="showDif()">Найти разность чисел</div>
+                <div class="message" onclick="showPr()">Найти произведение</div>
+                <div class="message" onclick="showDiv()">Найти отношение чисел</div>
+                <div class="message" onclick="showExp()">Возвести в степень</div>
+                <div class="message" onclick="showAuthor()">Узнать, кто автор страницы</div>
+
+                <div>
+                    <input type="button" value="Кнопка 1" onclick="changeOutput(1, 'Pink', 'DeepPink')">
+                    <input type="button" value="Кнопка 2" onclick="changeOutput(2, 'LightSalmon', 'Red')">
+                    <input type="button" value="Кнопка 3" onclick="changeOutput(3, 'Lavender', 'DarkOrchid')">
+                    <input type="button" value="Кнопка 4" onclick="changeOutput(4, 'PaleGreen', 'Green')">
+                </div>
+
+                <div id="output"></div>
+            </main>
+
+            <footer ondblclick="showFooter()" style="cursor: pointer;">
+                &copy; Черевцова Софья, ФБИ-34, 2 курс, 2025
+            </footer>
+        </body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Черевцова Софья Константиновна. Лабораторная работа 4</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-16x16.png">
+        <link rel="icon" href="../favicon-32x32.png">
+        <style>
+            main {
+                font-family: sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 70vh;
+            }
+    
+            .container {
+                background-color: #f0f8ea;
+                border: 1px solid #c8e6c9;
+                padding: 20px;
+                border-radius: 8px;
+                text-align: center;
+                box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            }
+    
+            .label {
+                font-size: 1.2em;
+                color: #2e7d32;
+                margin-bottom: 10px;
+            }
+    
+            .progress-1 {
+                background-color: #c8e6c9;
+                width: 300px;
+                height: 20px;
+                border-radius: 5px;
+                margin-bottom: 15px;
+                overflow: hidden;
+            }
+    
+            .progress {
+                background-color: #4caf50;
+                height: 20px;
+                width: 0;
+                border-radius: 5px;
+                transition: width 5s; 
+            }
+    
+            .button {
+                background-color: #1976d2;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 1em;
+                box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            }
+    
+            .button:hover {
+                box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+            }
+    
+            .button:active {
+                box-shadow: none;
+            }
+        </style>
+    </head>
+        <body>
+            <header>
+                НГТУ. ФБ, Лабораторная работа 4
+            </header>
+        
+            <main>
+                <div class="container">
+                    <div class="label">Степень прогресса</div>
+                    <div class="progress-1">
+                        <div class="progress" id="startP"></div>
+                    </div>
+                    <div class="button" id="startB">Нажмите и удерживайте</div>
+                </div>
+            </main>
+        
+            <footer>
+                &copy; Черевцова Софья, ФБИ-34, 2 курс, 2025
+            </footer>
+            <script>
+                const startB = document.getElementById('startB');
+                const startP = document.getElementById('startP');
+        
+                startB.addEventListener('mousedown', () => {
+                    startP.style.width = '300px';
+                });
+        
+                startB.addEventListener('mouseup', () => {
+                    startP.style.width = '0';
+                });
+            </script>
+        </body>
+</html>
