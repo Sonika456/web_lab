@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Черевцова Софья Константиновна. Лабораторная работа 5</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-16x16.png">
+        <link rel="icon" href="../favicon-32x32.png">
+        <script>
+        function showCoords() {
+            let x = this.event.x;
+            let y = this.event.y;
+            let div = document.getElementById('block');
+            let ctrlPressed = this.event.ctrlKey;
+            let altPressed = this.event.altKey;
+            let shiftPressed = this.event.shiftKey;
+            let outputText = '<b>x<b> = ' + x + 'px<br><b>y<b> = ' + y + 'px';
+
+            div.style.backgroundColor = 'PeachPuff';
+            div.style.border = '10px ridge Chocolate';
+            div.style.color = 'Chocolate';
+
+            if (ctrlPressed) {
+                div.style.color = 'ForestGreen';
+                outputText += '<br>Нажата клавиша Ctrl';
+            }
+            if (altPressed) {
+                div.style.backgroundColor = 'HotPink';
+                div.style.border = '15px dashed DeepPink';
+                div.style.color = 'White';
+                outputText += '<br>Нажата клавиша Alt';
+            }
+            if (shiftPressed) {
+                div.style.backgroundColor = 'Khaki';
+                div.style.border = '15px groove DarkKhaki';
+                div.style.color = 'DarkOliveGreen';
+                outputText += '<br>Нажата клавиша Shift';
+            }
+            if (ctrlPressed && altPressed) {
+                outputText = '<b>x<b> = ' + x + 'px<br><b>y<b> = ' + y + 'px<br>Нажаты клавиши Ctrl и Alt';
+                div.style.backgroundColor = 'MediumPurple';
+                div.style.border = '8px dotted Indigo';
+                div.style.color = 'White';
+            }
+            if (ctrlPressed && shiftPressed) {
+                outputText = '<b>x<b> = ' + x + 'px<br><b>y<b> = ' + y + 'px<br>Нажаты клавиши Ctrl и Shift';
+                div.style.backgroundColor = 'OliveDrab';
+                div.style.border = '12px double DarkOliveGreen';
+                div.style.color = 'LightYellow';
+            }
+            if (altPressed && shiftPressed) {
+                outputText = '<b>x<b> = ' + x + 'px<br><b>y<b> = ' + y + 'px<br>Нажаты клавиши Alt и Shift';
+                div.style.backgroundColor = 'MediumAquamarine';
+                div.style.border = '7px solid LightSeaGreen';
+                div.style.color = 'White';
+            }
+            if (ctrlPressed && altPressed && shiftPressed) {
+                outputText = '<b>x<b> = ' + x + 'px<br><b>y<b> = ' + y + 'px<br>Нажаты клавиши Ctrl, Alt и Shift';
+                div.style.backgroundColor = 'White';
+                div.style.border = '20px solid Blue';
+                div.style.color = 'Blue';
+            }
+
+            div.innerHTML = outputText;
+        }
+        </script>
+        <style>
+            #block {
+                width: 400px;
+                height: 400px;
+                border: 10px ridge Chocolate;
+                background-color: PeachPuff;
+                cursor: crosshair;
+                font-size: 30px;
+                color: Chocolate;
+            }
+        </style>
+    </head>
+        <body>
+            <header>
+                НГТУ. ФБ, Лабораторная работа 4
+            </header>
+
+            <main>
+                <div id="block" onmousemove="showCoords()"></div>
+            </main>
+
+            <footer>
+                &copy; Черевцова Софья, ФБИ-34, 2 курс, 2025
+            </footer>
+        </body>
+</html>
