@@ -22,6 +22,18 @@
                 let out5 = document.getElementById('current-date5');
                 out5.innerHTML = today.toLocaleString('zh-HK');
             }
+            let timerDate;
+            function startShowDate() {
+                showDate();
+                timerDate = setInterval(showDate, 1000);
+                document.getElementById('start-date-btn').disabled = true;
+                document.getElementById('stop-date-btn').disabled = false;
+            }
+            function stopShowDate() {
+                clearInterval(timerDate);
+                document.getElementById('start-date-btn').disabled = false;
+                document.getElementById('stop-date-btn').disabled = true;
+            }
             function ChangeColors() {
                 const header = document.getElementsByTagName('header')[0];
                 const rgb = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
@@ -48,7 +60,7 @@
                 margin: 5px;
             }
             header {
-            transition: 1s;
+                transition: 1s;
             }
         </style>
     </head>
@@ -68,6 +80,10 @@
                 <div id="current-date4"></div>
                 <div class="text">Дата и время для китайской локали: </div>
                 <div id="current-date5"></div>
+                <div>
+                    <button onclick="startShowDate()" id="start-date-btn">Обновлять время</button>
+                    <button onclick="stopShowDate()" disabled id="stop-date-btn">Остановить обновление времени</button>
+                </div>
                 <div>
                     <button onclick="startChangeColors()" id="start-btn">Старт</button>
                     <button onclick="stopChangeColors()" disabled id="stop-btn">Стоп</button>
