@@ -8,6 +8,41 @@
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <link rel="icon" href="favicon-16x16.png">
         <link rel="icon" href="favicon-32x32.png">
+        <style>
+            h1, h2 {
+                text-align: center;
+                margin-bottom: 20px;
+                color: #0f1948;
+            }
+            .calculator { 
+                margin-bottom: 40px; 
+                color: #0f1948;
+            }
+            .field { 
+                margin-bottom: 10px; 
+                text-align: center;
+            }
+            #rateDisplay { 
+                margin-bottom: 20px; 
+                font-size: 18px; 
+                font-weight: bold; 
+                text-align: center; 
+            }
+            #chart-container {
+                max-width: 1000px; 
+                height: 510px; 
+                margin: 40px auto; 
+                padding: 15px; 
+                box-sizing: border-box; 
+                border: 1px solid #ddd; 
+                border-radius: 8px; 
+                background-color: #fff; 
+                box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+            }
+            input { 
+                text-align: center; 
+            }
+        </style>
     </head>
         <body>
             <header id="top">
@@ -22,7 +57,25 @@
             </header>
 
             <main>
+                <h1>Калькулятор валют (Турецкая лира - TRY)</h1>
 
+                <div id="rateDisplay"></div>
+
+                <div class="calculator">
+                    <div class="field">
+                        <label>Рубли (RUB):</label>
+                        <input type="number" id="rub" placeholder="Введите сумму в рублях">
+                    </div>
+                    <div class="field">
+                        <label>Лиры (TRY):</label>
+                        <input type="number" id="foreign" placeholder="Введите сумму в лирах">
+                    </div>
+                </div>
+
+                <h2>Курс Турецкой лиры (TRY) за последние 30 дней</h2>
+                <div id="chart-container">
+                    <canvas id="tryChart"></canvas>
+                </div>
             </main>
 
             <footer>
@@ -35,5 +88,90 @@
                 </div>
             </footer>
             <a href="#top" class="back-to-top" title="Наверх">↑</a>
+
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+            <script>
+                let tryRate = 0;
+                async function fetchRate() {
+                    const res = await fetch('https://www.cbr-xml-daily.ru/daily_json.js');      
+                    const data = await res.json();
+                    const tryData = data.Valute.TRY;
+                    tryRate = tryData.Value / tryData.Nominal;
+                    document.getElementById('rateDisplay').textContent = `Актуальный курс: 1 TRY = ${tryRate.toFixed(2)} RUB`;
+                    setupConversion();
+                    loadHistory();
+                }
+
+                function setupConversion() {
+                    const rubInput = document.getElementById('rub');
+                    const foreignInput = document.getElementById('foreign');
+                    rubInput.oninput = () => {
+                        foreignInput.value = (rubInput.value / tryRate).toFixed(2);
+                    };
+                    foreignInput.oninput = () => {
+                        rubInput.value = (foreignInput.value * tryRate).toFixed(2);
+                    };
+                }
+
+                async function loadHistory() {
+                    const endDate = new Date();
+                    const dates = [];
+                    const rates = [];
+                    for (let i = 30; i >= 0; i--) {
+                        const date = new Date();
+                        date.setDate(endDate.getDate() - i);
+                        const y = date.getFullYear();
+                        const m = String(date.getMonth()+1).padStart(2, '0');
+                        const d = String(date.getDate()).padStart(2, '0');
+                        const url = `https://www.cbr-xml-daily.ru/archive/${y}/${m}/${d}/daily_json.js`;    
+                        try {
+                            const res = await fetch(url);
+                            if (res.ok) {
+                                const data = await res.json();
+                                if (data.Valute && data.Valute.TRY) {
+                                    const valuePerUnit = data.Valute.TRY.Value / data.Valute.TRY.Nominal;
+                                    dates.push(`${d}.${m}.${y}`);
+                                    rates.push(valuePerUnit);
+                                }
+                            }
+                        } catch (e) {
+                            console.warn(`Данные за ${d}.${m}.${y} недоступны.`);
+                        }
+                    }
+
+                    drawChart(dates, rates);
+                }
+
+                function drawChart(labels, data) {
+                    const ctx = document.getElementById('tryChart').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Курс TRY к RUB (на 1 единицу)',
+                                data: data.map(v => v.toFixed(4)),
+                                backgroundColor: 'rgba(41, 97, 224, 0.8)',
+                                borderColor: 'rgba(54, 162, 235, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            scales: {
+                                y: {
+                                    beginAtZero: false,
+                                    min: 1.9,
+                                    max: 2.2,
+                                    ticks: {
+                                        stepSize: 0.05
+                                    }
+                                }
+                            },
+                        }
+                    });
+                }
+                fetchRate();
+            </script>
         </body>
 </html>
